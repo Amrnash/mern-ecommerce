@@ -1,0 +1,25 @@
+{
+  "name": "mern-ecommerce",
+  "version": "1.0.0",
+  "description": "Mern e-commerce application",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/index",
+    "server": "nodemon backend/index",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Amr Nashaat",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
