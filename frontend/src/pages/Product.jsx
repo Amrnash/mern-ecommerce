@@ -15,7 +15,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { listProductDetails } from "../actions/product";
 const Product = ({ match, history }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const { product, loading, error } = productDetail;
