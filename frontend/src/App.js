@@ -8,6 +8,8 @@ import Prodcut from "./pages/Product";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Profile from './pages/Profile';
+import Shipping from './pages/Shipping';
 const App = () => {
   return (
     <Router>
@@ -16,6 +18,8 @@ const App = () => {
         <Container>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/shipping" component={Shipping} />
           <Route path="/product/:id" component={Prodcut} />
           <Route path="/cart/:id?" component={Cart} />
           <Route path="/" component={Home} exact />
