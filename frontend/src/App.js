@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Profile from './pages/Profile';
 import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
+import PlaceOrder from './pages/PlaceOrder';
 const App = () => {
   return (
     <Router>
@@ -19,6 +20,7 @@ const App = () => {
         <Container>
           <Route path="/login" component={Login} />
           <Route path="/payment" component={Payment} />
+          <Route path="/placeorder" component={PlaceOrder} />
           <Route path="/register" component={Register} />
           <Route path="/profile" component={Profile} />
           <Route path="/shipping" component={Shipping} />
