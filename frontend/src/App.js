@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
 import PlaceOrder from './pages/PlaceOrder';
+import Order from './pages/Order';
 const App = () => {
   return (
     <Router>
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/payment" component={Payment} />
           <Route path="/placeorder" component={PlaceOrder} />
+          <Route path="/order/:id" component={Order} />
           <Route path="/register" component={Register} />
           <Route path="/profile" component={Profile} />
           <Route path="/shipping" component={Shipping} />
