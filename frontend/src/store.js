@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { productListReducer, productDetailsReducer } from "./reducers/product";
 import { cartReducer } from "./reducers/cart";
-import { orderCreateReducer, orderDetailsReducer } from "./reducers/order";
+import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from "./reducers/order";
 import { 
   userLoginReducer, 
   userRegisterReducer, 
@@ -21,7 +21,8 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
-  orderDetails: orderDetailsReducer
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
 });
 
 // Get Data From Storage
