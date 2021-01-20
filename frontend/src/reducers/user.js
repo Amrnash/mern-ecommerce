@@ -13,6 +13,7 @@ import {
   USER_UPDATE_PROFILE_RESET,
   USER_UPDATE_PROFILE_SUCCESS,
   USER_LOGOUT,
+  USER_DETAILS_RESET,
 } from "../types/user";
 
 const userInitialState = {
@@ -68,6 +69,8 @@ export const userUpdateProfileReducer = (state = {}, action) => {
       return {loading: false, userInfo: action.payload, success: true}
     case USER_UPDATE_PROFILE_FAIL:
       return { loading: false, error: action.payload}
+    case USER_DETAILS_RESET:
+      return {user: {} }
     default:
       return state
   }
