@@ -16,12 +16,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { listProductDetails } from "../actions/product";
 const Product = ({ match, history }) => {
   const [qty, setQty] = useState(1);
+  const productId = match.params.id;
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const { product, loading, error } = productDetail;
   useEffect(() => {
-    dispatch(listProductDetails(match.params.id));
-  }, [dispatch]);
+    dispatch(listProductDetails(productId));
+  }, [dispatch, productId]);
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
