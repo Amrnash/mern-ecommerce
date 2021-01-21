@@ -14,7 +14,8 @@ import {
   userRegisterReducer, 
   userDetailsReducer, 
   userUpdateProfileReducer,
-  userListReducer
+  userListReducer,
+  userDeleteReducer
 } from "./reducers/user";
 
 
@@ -30,7 +31,8 @@ const reducer = combineReducers({
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
-  orderListMy: orderListMyReducer
+  orderListMy: orderListMyReducer,
+  userDelete: userDeleteReducer
 });
 
 // Get Data From Storage
