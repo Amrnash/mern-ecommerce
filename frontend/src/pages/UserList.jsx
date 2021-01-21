@@ -19,7 +19,7 @@ const UserList = ({ history }) => {
           } else {
             history.push('/login')
           }
-    },[dispatch]);
+    },[dispatch,history]);
     const deleteHandler = () => {}
     return (
         <>
