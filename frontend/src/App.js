@@ -8,12 +8,13 @@ import Prodcut from "./pages/Product";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Profile from './pages/Profile';
-import Shipping from './pages/Shipping';
-import Payment from './pages/Payment';
-import PlaceOrder from './pages/PlaceOrder';
-import Order from './pages/Order';
-import UserList from './pages/UserList';
+import Profile from "./pages/Profile";
+import Shipping from "./pages/Shipping";
+import Payment from "./pages/Payment";
+import PlaceOrder from "./pages/PlaceOrder";
+import Order from "./pages/Order";
+import UserList from "./pages/UserList";
+import UserEdit from "./pages/UserEdit";
 const App = () => {
   return (
     <Router>
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/product/:id" component={Prodcut} />
           <Route path="/cart/:id?" component={Cart} />
           <Route path="/admin/userlist" component={UserList} />
+          <Route path="/admin/user/:id/edit" component={UserEdit} />
           <Route path="/" component={Home} exact />
         </Container>
       </main>

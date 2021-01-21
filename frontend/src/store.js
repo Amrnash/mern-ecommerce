@@ -3,21 +3,21 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { productListReducer, productDetailsReducer } from "./reducers/product";
 import { cartReducer } from "./reducers/cart";
-import { 
-  orderCreateReducer, 
-  orderDetailsReducer, 
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
   orderPayReducer,
-  orderListMyReducer
+  orderListMyReducer,
 } from "./reducers/order";
-import { 
-  userLoginReducer, 
-  userRegisterReducer, 
-  userDetailsReducer, 
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
   userUpdateProfileReducer,
   userListReducer,
-  userDeleteReducer
+  userDeleteReducer,
+  userUpdateReducer,
 } from "./reducers/user";
-
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -27,12 +27,13 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
+  userUpdate: userUpdateReducer,
   userList: userListReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
-  userDelete: userDeleteReducer
+  userDelete: userDeleteReducer,
 });
 
 // Get Data From Storage
@@ -47,7 +48,10 @@ const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
   : {};
 // Initialize Store With Data From Local Storage
 const initialState = {
-  cart: { cartItems: cartItemsFromStorage, shippingAddress: shippingAddressFromStorage },
+  cart: {
+    cartItems: cartItemsFromStorage,
+    shippingAddress: shippingAddressFromStorage,
+  },
   userLogin: { userInfo: userInfoFromStorage },
 };
 // Creating The Redux Store With The Thunk Middleware

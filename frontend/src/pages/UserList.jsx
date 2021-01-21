@@ -59,7 +59,7 @@ const UserList = ({ history }) => {
                                   }
                               </td>
                               <td>
-                                  <Button as={Link} to={`/users/${user._id}/edit`} variant="light" className="btn-sm">
+                                  <Button as={Link} to={`/admin/user/${user._id}/edit`} variant="light" className="btn-sm">
                                     <i className="fas fa-edit"></i>
                                   </Button>
                                   <Button variant="danger" className="btn-sm" onClick={() => {deleteHandler(user._id)}}>
