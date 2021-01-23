@@ -18,8 +18,8 @@ const Product = ({ match, history }) => {
   const [qty, setQty] = useState(1);
   const productId = match.params.id;
   const dispatch = useDispatch();
-  const productDetail = useSelector((state) => state.productDetail);
-  const { product, loading, error } = productDetail;
+  const productDetails = useSelector((state) => state.productDetails);
+  const { product, loading, error } = productDetails;
   useEffect(() => {
     dispatch(listProductDetails(productId));
   }, [dispatch, productId]);
@@ -38,7 +38,7 @@ const Product = ({ match, history }) => {
       ) : (
         <Row>
           <Col md={5}>
-            <Image src={product.image} alt={product.name} fluid />
+            <Image src={`${product.image}`} alt={product.name} fluid />
           </Col>
           <Col md={4}>
             <ListGroup variant="flush">

@@ -2,7 +2,7 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 
-const router = express.router();
+const router = express.Router();
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -36,5 +36,4 @@ const upload = multer({
 router.post("/", upload.single("image"), (req, res) => {
   res.send(`/${req.file.path}`);
 });
-router.post();
 export default router;

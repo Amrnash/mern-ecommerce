@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { listProductDetails, updateProduct } from "../actions/product";
 import { PRODUCT_UPDATE_RESET } from "../types/product";
+import Axios from "axios";
 
 const ProductEdit = ({ match, history }) => {
   const productId = match.params.id;
@@ -17,6 +18,7 @@ const ProductEdit = ({ match, history }) => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -48,6 +50,26 @@ const ProductEdit = ({ match, history }) => {
       }
     }
   }, [dispatch, productId, product, history, successUpdate]);
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      const { data } = await Axios.post("/api/upload", formData, config);
+      setImage(data);
+      setUploading(false);
+    } catch (e) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -62,6 +84,7 @@ const ProductEdit = ({ match, history }) => {
         countInStock,
       })
     );
+    history.push("/admin/productlist");
   };
   return (
     <>
@@ -100,10 +123,17 @@ const ProductEdit = ({ match, history }) => {
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter image URL"
+                placeholder="Enter image url"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+              <Form.File
+                id="image-file"
+                label="Choose File"
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
             <Form.Group controlId="brand">
               <Form.Label>Brand</Form.Label>
@@ -141,13 +171,7 @@ const ProductEdit = ({ match, history }) => {
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Button
-              type="sumbit"
-              variant="primary"
-              onClick={() => {
-                history.push("/admin/productlist");
-              }}
-            >
+            <Button type="sumbit" variant="primary">
               Update
             </Button>
           </Form>
