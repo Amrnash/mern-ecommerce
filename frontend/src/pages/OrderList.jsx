@@ -4,7 +4,6 @@ import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-// import { listUsers, deleteUser } from "../actions/user";
 import { listOrders } from "../actions/order";
 const OrderList = ({ history }) => {
   const dispatch = useDispatch();
@@ -22,9 +21,6 @@ const OrderList = ({ history }) => {
       history.push("/login");
     }
   }, [dispatch, history, userInfo]);
-  const deleteHandler = (id) => {
-    // if (window.confirm("Are you sure")) dispatch(deleteUser(id));
-  };
   return (
     <>
       <h1>Orders</h1>
@@ -52,7 +48,7 @@ const OrderList = ({ history }) => {
                 <td>{order.totalPrice}</td>
                 <td>
                   {order.isPaid ? (
-                    order.paidAt.substring(0, 10)
+                    <i className="fas fa-check" style={{ color: "green" }}></i>
                   ) : (
                     <i className="fas fa-times" style={{ color: "red" }}></i>
                   )}
