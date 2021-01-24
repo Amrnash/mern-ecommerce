@@ -3,6 +3,10 @@ import asyncHandler from "express-async-handler";
 
 // Public GET /api/products------fetch all products
 const getProducts = asyncHandler(async (req, res) => {
+  const pageSize = 10;
+  // the current page that we are on
+  const page = Number(req.query.pageNumber) || 1;
+
   const keyword = req.query.keyword
     ? {
         name: {
@@ -11,8 +15,13 @@ const getProducts = asyncHandler(async (req, res) => {
         },
       }
     : {};
-  const products = await Product.find({ ...keyword });
-  return res.json(products);
+  // we get the number if products from the database
+  const count = await Product.countDocuments({ ...keyword });
+  // we get products equal to the pageSize and skip the prods on previous pages
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  return res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 // Public GET /api/products/:id------fetch single product
 const getProductById = asyncHandler(async (req, res) => {
