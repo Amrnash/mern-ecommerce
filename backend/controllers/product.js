@@ -3,7 +3,15 @@ import asyncHandler from "express-async-handler";
 
 // Public GET /api/products------fetch all products
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+  const products = await Product.find({ ...keyword });
   return res.json(products);
 });
 // Public GET /api/products/:id------fetch single product
